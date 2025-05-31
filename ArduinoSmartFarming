@@ -1,0 +1,22 @@
+//Arduino Smartfarming
+#define LDR A0    // Ganti ke A0 karena Arduino pakai pin analog
+#define LED 7     // Gunakan pin digital biasa untuk LED
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  pinMode(LDR, INPUT);
+  Serial.begin(9600); // Untuk lihat nilai LDR di Serial Monitor
+}
+
+void loop() {
+  int nilaiLDR = analogRead(LDR);
+  Serial.print("Nilai LDR: ");
+  Serial.println(nilaiLDR); // Biar bisa dipantau di monitor
+  delay(10);
+
+  if (nilaiLDR > 800) {
+    digitalWrite(LED, HIGH);
+  } else {
+    digitalWrite(LED, LOW);
+  }
+}
